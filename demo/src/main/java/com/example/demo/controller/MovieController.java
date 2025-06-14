@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,18 +18,19 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
+    @GetMapping
+    public ResponseEntity<List<Movie>> getAllMovies() {
+        return ResponseEntity.ok(movieService.getAllMovies());
+    }
+
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Movie> createMovie(@RequestBody MovieRequest request) {
         Movie movie = movieService.createMovie(
                 request.getTitle(),
                 request.getYear(),
                 request.getGenre());
         return ResponseEntity.status(HttpStatus.CREATED).body(movie);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Movie>> getAllMovies() {
-        return ResponseEntity.ok(movieService.getAllMovies());
     }
 
     public static class MovieRequest {
