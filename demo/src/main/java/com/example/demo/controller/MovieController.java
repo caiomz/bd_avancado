@@ -2,7 +2,12 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Movie;
 import com.example.demo.service.MovieService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,8 +18,17 @@ public class MovieController {
     private MovieService movieService;
 
     @PostMapping
-    public Movie createMovie(@RequestBody MovieRequest request) {
-        return movieService.createMovie(request.getTitle(), request.getYear(), request.getGenre());
+    public ResponseEntity<Movie> createMovie(@RequestBody MovieRequest request) {
+        Movie movie = movieService.createMovie(
+                request.getTitle(),
+                request.getYear(),
+                request.getGenre());
+        return ResponseEntity.status(HttpStatus.CREATED).body(movie);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Movie>> getAllMovies() {
+        return ResponseEntity.ok(movieService.getAllMovies());
     }
 
     public static class MovieRequest {

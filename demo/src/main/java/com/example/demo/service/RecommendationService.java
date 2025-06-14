@@ -18,6 +18,7 @@ public class RecommendationService {
         this.driver = driver;
     }
 
+    @SuppressWarnings("deprecation")
     public List<Movie> watchMovieAndRecommend(String userId, String movieTitle) {
         try (Session session = driver.session()) {
             session.writeTransaction(tx -> {
@@ -32,6 +33,7 @@ public class RecommendationService {
         }
     }
 
+    @SuppressWarnings("deprecation")
     public List<Movie> recommendMovies(String userId) {
         try (Session session = driver.session()) {
             return session.readTransaction(tx -> {

@@ -4,6 +4,9 @@ import com.example.demo.model.Genre;
 import com.example.demo.model.Movie;
 import com.example.demo.repository.GenreRepository;
 import com.example.demo.repository.MovieRepository;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +27,9 @@ public class MovieService {
 
         Movie movie = new Movie(title, year, genre);
         return movieRepository.save(movie);
+    }
+
+    public List<Movie> getAllMovies() {
+        return movieRepository.findAll();
     }
 }
