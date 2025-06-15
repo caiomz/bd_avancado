@@ -1,11 +1,11 @@
-package com.example.demo.service;
+package com.example.demo.services;
 
 import org.neo4j.driver.*;
 import org.neo4j.driver.Record;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.Genre;
-import com.example.demo.model.Movie;
+import com.example.demo.models.Genre;
+import com.example.demo.models.Movie;
 
 import java.util.*;
 

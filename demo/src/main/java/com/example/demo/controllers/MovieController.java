@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.example.demo.controllers;
 
-import com.example.demo.model.Movie;
-import com.example.demo.service.MovieService;
+import com.example.demo.models.Movie;
+import com.example.demo.services.MovieService;
 
 import java.util.List;
 

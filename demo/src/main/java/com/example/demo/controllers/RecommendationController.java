@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.example.demo.controllers;
 
-import com.example.demo.model.Movie;
-import com.example.demo.service.RecommendationService;
+import com.example.demo.models.Movie;
+import com.example.demo.services.RecommendationService;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

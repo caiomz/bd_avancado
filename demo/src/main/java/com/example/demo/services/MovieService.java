@@ -1,9 +1,10 @@
-package com.example.demo.service;
+package com.example.demo.services;
 
-import com.example.demo.model.Genre;
-import com.example.demo.model.Movie;
-import com.example.demo.repository.GenreRepository;
-import com.example.demo.repository.MovieRepository;
+import com.example.demo.models.Genre;
+import com.example.demo.models.Movie;
+import com.example.demo.repositories.GenreRepository;
+import com.example.demo.repositories.MovieRepository;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
