@@ -33,6 +33,21 @@ public class MovieController {
         return ResponseEntity.status(HttpStatus.CREATED).body(movie);
     }
 
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Movie> updateMovie(
+            @PathVariable Long id,
+            @RequestBody MovieRequest request) {
+
+        Movie movie = movieService.updateMovie(
+                id,
+                request.getTitle(),
+                request.getYear(),
+                request.getGenre());
+
+        return ResponseEntity.ok(movie);
+    }
+
     public static class MovieRequest {
         private String title;
         private int year;
