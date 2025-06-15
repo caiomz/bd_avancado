@@ -49,4 +49,10 @@ public class MovieService {
         return movieRepository.save(existingMovie);
     }
 
+    public void deleteMovie(Long id) {
+        if (!movieRepository.existsById(id)) {
+            throw new RuntimeException("Movie not found with id: " + id);
+        }
+        movieRepository.deleteById(id);
+    }
 }
